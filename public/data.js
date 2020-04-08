@@ -32,7 +32,9 @@ function get_results() {
   } else {
     var web_server, widgets, CMS, web_location, google_analytics, reCAPTCHA;
     $.when(
-      $.getJSON(my_domain + 'server.php?url=' + url, function (data) {
+      $.getJSON(my_domain + php_path + 'server.php?url=' + url, function (
+        data
+      ) {
         if (typeof data.groups != 'undefined') {
           web_server = json_edit(data.groups[0]);
           widgets = json_edit(data.groups[5]);
@@ -42,17 +44,17 @@ function get_results() {
         }
       }),
 
-      $.get('php_path' + 'CMS_server.php?url=' + url, function (data_CMS) {
+      $.get(php_path + 'CMS_server.php?url=' + url, function (data_CMS) {
         CMS = data_CMS;
       }),
 
-      $.get('php_path' + 'country_server.php?url=' + url, function (
+      $.get(php_path + 'country_server.php?url=' + url, function (
         data_country
       ) {
         web_location = data_country;
       }),
 
-      $.get('php_path' + 'get_html_data.php>url=' + 'https' + url, function (
+      $.get(php_path + 'get_html_data.php>url=' + https + url, function (
         get_html_data
       ) {
         google_analytics = get_html_data[0];

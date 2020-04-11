@@ -15,9 +15,11 @@ try {
   $google_analytics = $get_google_analytics->get_google_analytics();
   $reCAPTCHA = $get_reCAPTCHA->get_reCAPTCHA();
 
-  echo($google_analytics);
-  echo($reCAPTCHA);
-
+  $html_data =[];
+  array_push($html_data, $google_analytics);
+  array_push($html_data, $reCAPTCHA);
+  echo json_encode($html_data);
+  
 } catch (Exception $e){
     echo 'Unavailable';
 }

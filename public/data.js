@@ -21,7 +21,9 @@ function json_edit(element) {
 
 //get url and connect with services to optain data
 function get_results() {
-  var my_domain = 'https://testing-test-2.tk/Karolina_R0012E_microservice/';
+  var my_domain =
+    'http://localhost/Marketing_Standard/Karolina_R0012E_microservice/public/';
+  //'https://testing-test-2.tk/Karolina_R0012E_microservice/';
   var https = 'https://';
   var php_path = '../src/services/';
   var url = document.getElementById('enter_url').value;
@@ -48,21 +50,24 @@ function get_results() {
         CMS = data_CMS;
       }),
 
-      $.get(php_path + 'country_server.php?url=' + url, function (
-        data_country
-      ) {
-        web_location = data_country;
-      }),
+      // $.get(php_path + 'country_server.php?url=' + url, function (
+      //   data_country
+      // ) {
+      //   web_location = data_country;
+      // }),
 
-      $.get(php_path + 'get_html_data.php>url=' + https + url, function (
+      $.get(php_path + 'get_html_data.php?url=' + https + url, function (
         get_html_data
       ) {
+        get_html_data = JSON.parse(get_html_data);
         google_analytics = get_html_data[0];
         reCAPTCHA = get_html_data[1];
       })
       //display elements
     ).then(function () {
-      if ((web_server, widgets, CMS, web_location)) {
+      if (
+        (web_server, widgets, CMS, google_analytics, reCAPTCHA) //web_location
+      ) {
         $('#board').before('<div class="title">Results</div>');
         $('<div id=board_results></div>').replaceAll('#board');
         $('#board_results').html('<b>URL:</b> ' + url + '<br><br>');

@@ -32,6 +32,10 @@ function get_results() {
     alert('Please input a Value');
     return false;
   } else {
+    //button disabled when loading data
+    $('.submit').addClass('cliked');
+    document.getElementById('url').disabled = true;
+
     var web_server, widgets, CMS, web_location, google_analytics, reCAPTCHA;
     $.when(
       $.getJSON(my_domain + php_path + 'server.php?url=' + url, function (

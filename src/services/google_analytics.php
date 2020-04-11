@@ -13,33 +13,31 @@ class get_google_analytics{
     }
 
     foreach($head as $head_part) {
-      if(strpos($head_part, ('google-analytics.com')) !== false){
+      if((strpos($head_part, ('analytics.js'))) || strpos($head_part, ('google-analytics.com')) !== false){
         array_push($answer,'YES');
       } 
     };
     if(in_array('YES', $answer)) {
       $answer = 'YES';
     } elseif(($handle = fopen('google_analytics_data.csv', 'r')) !== FALSE) {
-        $column_data = array();
-        $row = -1;
-        while (($data = fgetcsv($handle, ',' )) !== FALSE) {
-          $num = count($data);
-          $row++;
-          for ($c = 0; $c < $num; $c++) {
-            $column_data[$row][$c]= $data[$c];
-        }
-            foreach($column_data as $www){
-              if(strpos($url, $www) !== false){
-                array_push($answer, 'YES');
-                
-              }
-            }
+        //crreat array from csv column
+        $websites = array();
+        while (($website = fgetcsv($handle)) !== FALSE) {
+          $websites[] = $website[0];
           }
           fclose($handle);
-        } 
-      else {
-      $answer = 'NO';
-    }
+          //print_r($websites);
+          foreach($websites as $www){
+            if(strpos($url, $www) !== false){
+               array_push($answer, 'YES'); 
+            }
+          }
+          if(in_array('YES', $answer)){
+            $answer = 'YES';
+          } else {
+            $answer = 'NO';
+          }
+        }
     return $answer;
   }
 }

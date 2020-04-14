@@ -23,7 +23,7 @@ function json_edit(element) {
 function get_results() {
   var my_domain = 'https://testing-test-2.tk/Karolina_R0012E_microservice/';
   var https = 'https://';
-  var php_path = '../src/services/';
+  var php_path = './src/services/';
   var url = document.getElementById('enter_url').value;
 
   if (url == '') {

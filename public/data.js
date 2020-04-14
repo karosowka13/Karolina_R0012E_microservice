@@ -21,9 +21,7 @@ function json_edit(element) {
 
 //get url and connect with services to optain data
 function get_results() {
-  var my_domain =
-    'http://localhost/Marketing_Standard/Karolina_R0012E_microservice/public/';
-  //'https://testing-test-2.tk/Karolina_R0012E_microservice/';
+  var my_domain = 'https://testing-test-2.tk/Karolina_R0012E_microservice/';
   var https = 'https://';
   var php_path = '../src/services/';
   var url = document.getElementById('enter_url').value;
@@ -38,9 +36,7 @@ function get_results() {
 
     var web_server, widgets, CMS, web_location, google_analytics, reCAPTCHA;
     $.when(
-      $.getJSON(my_domain + php_path + 'server.php?url=' + url, function (
-        data
-      ) {
+      $.getJSON(php_path + 'server.php?url=' + url, function (data) {
         if (typeof data.groups != 'undefined') {
           web_server = json_edit(data.groups[0]);
           widgets = json_edit(data.groups[5]);
@@ -54,11 +50,11 @@ function get_results() {
         CMS = data_CMS;
       }),
 
-      // $.get(php_path + 'country_server.php?url=' + url, function (
-      //   data_country
-      // ) {
-      //   web_location = data_country;
-      // }),
+      $.get(php_path + 'country_server.php?url=' + url, function (
+        data_country
+      ) {
+        web_location = data_country;
+      }),
 
       $.get(php_path + 'get_html_data.php?url=' + https + url, function (
         get_html_data

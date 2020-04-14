@@ -7,7 +7,8 @@ $ctx = stream_context_create(array('http'=>
 ));
 
 $url = $_GET['url'];
-
+//not showing waring messages on website
+error_reporting(E_ALL ^ E_WARNING); 
 try {
     
     include(__DIR__ . '/vendor/autoload.php');

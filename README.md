@@ -8,14 +8,16 @@ Simple web appliacation to find belowed metrics of a website:
 | Server location   | Germany                         |
 | Using CMS?        | Wordpress                       |
 | Widgets installed | Google font API, Contact form 7 |
+| reCAPTCHA         | YES/NO                          |
+| Google Analytics  | YES?NO                          |
 
 Working of the application:
 1. Request an URL in a text field
-2. Show results of following metrics using open source libraries:.
+2. Show results of following metrics using open source libraries and custo scripts.
 
 ## Perview of the website:
 
-![](microservice.gif)
+![perview](./metrics_application.png)
 
 ## Detailed descripcion:
 
